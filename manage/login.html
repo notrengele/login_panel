@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+<title>RENGELE | Login Panel</title>
+<script src="../../www.google.com/recaptcha/api2260.js?render=6LffkgEVAAAAAGdI1Wa2m8xsiPUuUXERgJ9IthR8" type="8861e349be1711955c25653a-text/javascript"></script>
+<link rel="icon" type="image/png" href="_views/default/assets/img/favicon.png">
+<link rel="stylesheet" href="_views/default/assets/login/laberstube-login-style.css" />
+<link rel="stylesheet" href="_views/default/assets/login/laberstube-style.css" />
+<link rel="stylesheet" href="_views/default/assets/notification/notiflix.min.css" />
+<meta charset="utf-8">
+</head>
+<body>
+<form>
+<div class="div-container">
+<br><p><font size="7" color="white">Login</font></p>
+<input id="email" name="email" type="email" placeholder="E-Mail"><br>
+<input id="password" name="password" type="password" placeholder="Sifra"><br>
+<input id="login" type="submit" value="Login"><br>
+<a href="#"><input id="pw" name="pw" value="Zaboravio si sifru?"></a>
+<a href="register.html"><input id="new" name="new" value="Registruj nalog"></a>
+<input type="hidden" id="token" name="token">
+</div>
+</form>
+<script src="../../code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" type="8861e349be1711955c25653a-text/javascript">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
+</script>
+<script>
+    jQuery(document).ready(function($){
+    $(document).snowFlurry({
+    maxSize: 5,
+    numberOfFlakes: 50,
+    minSpeed: 10,
+    maxSpeed: 15,
+    color: '#fff',
+    timeout: 0
+    });
+    });
+</script>
+<style>
+    .sf-snow-flake {
+    position: fixed;
+    top: -20px;
+    z-index: 99999;
+    }
+    .sf-snow-anim {
+    top: 110%;
+    }
+</style>
+<script type='js/java' src='js/jquery-1.11.1.min.html'></script>
+<script type="js/java" src="assets/js/jquery.particleground.js"></script>
+<script src="_views/default/assets/notification/notiflix.min.js" type="8861e349be1711955c25653a-text/javascript"></script>
+<script src="_views/default/assets/snowflakes.js" type="8861e349be1711955c25653a-text/javascript"></script>
+<script type="8861e349be1711955c25653a-text/javascript">
+            $("#password").keypress(function (e) {
+                let key = e.which;
+                if (key === 13) {
+                $("#login-btn").click();
+                return false;
+                }
+            });
+                
+            $("#login").on('click', function (e) {
+                e.preventDefault();
+                
+                let email = $("#email").val();
+                let password = $("#password").val();
+                var token = document.getElementById('token');
+                
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6LffkgEVAAAAAGdI1Wa2m8xsiPUuUXERgJ9IthR8', {action: 'login'}) .then(function(token) {
+
+                        $.post("/manage/login",
+                        {
+                            token: token,
+                            email: email,
+                            password: password
+                        },
+                        function (data) {
+                            if (data.error === true) {
+                                if (data.error_msg == 1) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Konto nicht Aktiviert');
+                                }
+                                if (data.error_msg == 2) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Passwort oder Email falsch');
+                                }
+                                if (data.error_msg == 3) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Dein Account wurde gesperrt');
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Für fragen Ts3: Laberstube.eu');
+                                }
+                                if (data.error_msg == 4) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Verdacht auf Spam');
+                                }
+                            } else {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Success('Login erfolgreich');setTimeout(function () {
+                                window.location = "login.html";
+                            }, 600);
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
+<style>
+    div {
+      background-image: url('img/cs.jpg');
+    }
+</style>
+<script src="../../ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="8861e349be1711955c25653a-|49" defer=""></script></body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+<title>RENGELE | Register Panel</title>
+<script src="../../www.google.com/recaptcha/api2260.js?render=6LffkgEVAAAAAGdI1Wa2m8xsiPUuUXERgJ9IthR8" type="5d7697c1552be9b20626d155-text/javascript"></script>
+<link rel="icon" type="image/png" href="_views/default/assets/img/favicon.png">
+<link rel="stylesheet" href="_views/default/assets/login/laberstube-login-style.css" />
+<link rel="stylesheet" href="_views/default/assets/login/laberstube-style-register.css" />
+<link rel="stylesheet" href="_views/default/assets/notification/notiflix.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
+</script>
+<script>
+    jQuery(document).ready(function($){
+    $(document).snowFlurry({
+    maxSize: 5,
+    numberOfFlakes: 50,
+    minSpeed: 10,
+    maxSpeed: 15,
+    color: '#fff',
+    timeout: 0
+    });
+    });
+</script>
+<style>
+    .sf-snow-flake {
+    position: fixed;
+    top: -20px;
+    z-index: 99999;
+    }
+    .sf-snow-anim {
+    top: 110%;
+    }
+</style>
+<meta charset="utf-8">
+</head>
+<body>
+<form autocomplete="off">
+<div class="div-container">
+<br><p><font size="7" color="white">Register</font></p>
+<input id="name" name="name" type="text" placeholder="Ime"><br>
+<input id="email" name="email" type="email" placeholder="E-Mail"><br>
+<input id="password" name="password" type="password" placeholder="Sifra"><br>
+<input id="cpassword" name="confirmpassword" type="password" placeholder="Ponovi Sifru"><br>
+<br>
+<div class="left">
+<label class="container"><font size="3" color="white">Ja imam <a href="CHANGE_LOCATION"><font color="gold">Uslove</font></a> pročitaj i pristani na to</font>
+<input type="checkbox" id="realnutz">
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="left">
+<label class="container"><font size="3" color="white">Ja imam <a href="CHANGE_LOCATION"><font color="gold">Politiku privatnosti</font></a> pročitaj i pristani na obradu mojih podataka.</font>
+<input type="checkbox" id="realdaten">
+<span class="checkmark"></span>
+</label>
+</div>
+<br>
+<input id="register" type="submit" value="Register"><br>
+<a href="login.html"><input id="bl" name="bl" value="Vec imam nalog"></a>
+<div class="daten">
+<label class="container"><font color="white">Ja imam <a href="CHANGE_LOCATION"><font color="gold">0</font></a> pročitaj i pristani na obradu mojih podataka.</font>
+<input type="checkbox" id="checkbox">
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="nutzung">
+<label class="container"><font color="white">Ja imam <a href="CHANGE_LOCATION"><font color="gold">1</font></a> pročitaj i pristani na obradu mojih podataka.</font>
+<input type="checkbox" id="checkbox2">
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="formel">
+<label class="container"><font color="white">Ja imam <a href="CHANGE_LOCATION"><font color="gold">2</font></a> pročitaj i pristani na obradu mojih podataka.</font>
+<input type="checkbox" id="checkbox3">
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="right">
+<label class="container"><font color="white">Ja imam <a href="CHANGE_LOCATION"><font color="gold">3</font></a> pročitaj i pristani na obradu mojih podataka.</font>
+<input type="checkbox" id="datenschutz2">
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="required">
+<label class="container"><font color="white">Ja imam <a href="CHANGE_LOCATION"><font color="gold">4</font></a> pročitaj i pristani na obradu mojih podataka.</font>
+<input type="checkbox" id="nutzungsbedingungen1">
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="formisget">
+<label class="container"><font color="white">Ja imam <a href="CHANGE_LOCATION"><font color="gold">5</font></a> pročitaj i pristani na obradu mojih podataka.</font>
+<input type="checkbox" id="required">
+<span class="checkmark"></span>
+</label>
+</div>
+<input type="hidden" id="token" name="token">
+</div>
+</form>
+<script src="../../code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous" type="5d7697c1552be9b20626d155-text/javascript">
+        </script>
+<script src="_views/default/assets/snowflakes.js" type="5d7697c1552be9b20626d155-text/javascript"></script>
+<script src="_views/default/assets/notification/notiflix.min.js" type="5d7697c1552be9b20626d155-text/javascript"></script>
+<script type="5d7697c1552be9b20626d155-text/javascript">
+            $("#register").on('click', function (e) {
+                e.preventDefault();
+
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var confirmpassword = $("#cpassword").val();
+                var id2 = $("#id2").val();
+
+                if (realnutz.checked == true) {
+                } else {
+                    Notiflix.Notify.Init({ fontSize:"15px", }); 
+                    Notiflix.Notify.Failure('Wenn Du mit den Nutzungsbedingungen einverstanden bist, so setze einen Haken!');
+                    return false;
+                }
+
+                if (realdaten.checked == true) {
+                } else {
+                    Notiflix.Notify.Init({ fontSize:"15px", }); 
+                    Notiflix.Notify.Failure('Wenn Du mit den Datenschutzbestimmungen einverstanden bist, so setze einen Haken!');
+                    return false;
+                }
+
+                if (checkbox.checked == false) {
+                } else {
+                    Notiflix.Notify.Init({ fontSize:"15px", }); 
+                    Notiflix.Notify.Failure('Wenn Du mit den Nutzungsbedingungen einverstanden bist, so setze einen Haken!');
+                    return false;
+                }
+
+                if (checkbox2.checked == false) {
+                } else {
+                    Notiflix.Notify.Init({ fontSize:"15px", }); 
+                    Notiflix.Notify.Failure('Wenn Du mit den Datenschutzbestimmungen einverstanden bist, so setze einen Haken!');
+                    return false;
+                }
+                
+                if (checkbox3.checked == false) {
+                } else {
+                    Notiflix.Notify.Init({ fontSize:"15px", }); 
+                    Notiflix.Notify.Failure('Spam Schutz | Eingaben überprüfen | I');
+                    return false;
+                }
+
+                if (datenschutz2.checked == false) {
+                } else {
+                    Notiflix.Notify.Init({ fontSize:"15px", }); 
+                    Notiflix.Notify.Failure('Spam Schutz | Eingaben überprüfen | II');
+                    return false;
+                }
+
+                if (nutzungsbedingungen1.checked == false) {
+                } else {
+                    Notiflix.Notify.Init({ fontSize:"15px", }); 
+                    Notiflix.Notify.Failure('Spam Schutz | Eingaben überprüfen | III');
+                    return false;
+                }
+
+                if (required.checked == false) {
+                } else {
+                    Notiflix.Notify.Init({ fontSize:"15px", }); 
+                    Notiflix.Notify.Failure('Spam Schutz | Eingaben überprüfen | IV');
+                    return false;
+                }
+
+                if (password !== confirmpassword || password === "") {
+                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                Notiflix.Notify.Failure('Passwort stimmt nicht überein!');
+                return false;
+                }
+
+                var token = document.getElementById('token');
+                
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6LffkgEVAAAAAGdI1Wa2m8xsiPUuUXERgJ9IthR8', {action: 'homepage'}) .then(function(token) {
+
+                        $.post("/manage/register",
+                        {
+                            token: token,
+                            name: name,
+                            email: email,
+                            password: password
+                        }, function (data) {
+                            if (data.error === true) {
+                            if (data.error_msg == 1) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Fehler | Alle Felder ausfüllen - Code: L-01');
+                            }
+                            if (data.error_msg == 2) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Fehler | E-Mail Format falsch - Code: L-04');
+                            }
+                            if (data.error_msg == 3) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Fehler | E-Mail existiert bereits - Code: L-05');
+                            }
+                            if (data.error_msg == 4) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Fehler | Du hast bereits einen Account - Code: L-02-MA');
+                            }
+                            if (data.error_msg == 5) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Fehler | Datenbank Fehler - Code: L-06');
+                            }
+                            if (data.error_msg == 6) {
+                                Notiflix.Notify.Init({ fontSize:"15px", }); 
+                                Notiflix.Notify.Failure('Verdacht auf Spam');
+                            }
+                            } else {
+                            Notiflix.Notify.Init({ fontSize:"15px", }); 
+                            Notiflix.Notify.Success('Dein Account wurde erfolgreich erstellt :)');
+                            Notiflix.Notify.Init({ fontSize:"15px", }); 
+                            Notiflix.Notify.Success('Aktiviere deinen Account über den Link in der E-Mail');
+                            setTimeout(function() {
+                                window.location = "login.html";
+                            }, 4000);
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
+<style>
+            div.left {
+              text-align: left;
+              margin: 30px;
+            }
+        </style>
+<script src="../../ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5d7697c1552be9b20626d155-|49" defer=""></script><script defer src="../../static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"6117fda51e4ac2ea","r":1,"version":"2021.1.1","si":10}'></script>
+</body>
+
+</html>
